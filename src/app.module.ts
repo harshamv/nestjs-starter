@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 // NPM Packages
-import { MongooseModule } from '@nestjs/mongoose';
 
 // Custom Packages
 import { ConfigModule } from './config/config.module';
