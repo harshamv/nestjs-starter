@@ -1,6 +1,11 @@
+// Core Modules
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
+
+// NPM Modules
 import { JwtService } from '@nestjs/jwt';
+
+// Custom Modules
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class AuthService {

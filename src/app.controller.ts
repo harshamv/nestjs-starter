@@ -1,5 +1,10 @@
+// Core Modules
 import { Controller, Request, Get, Post, UseGuards } from '@nestjs/common';
+
+// NPM Modules
 import { AuthGuard } from '@nestjs/passport';
+
+// Custom Modules
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 

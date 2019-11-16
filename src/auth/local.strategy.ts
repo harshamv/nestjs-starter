@@ -1,6 +1,11 @@
+// Core Modules
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+
+// NPM Modules
 import { Strategy } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+
+// Custom Modules
 import { AuthService } from './auth.service';
 
 @Injectable()
