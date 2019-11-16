@@ -7,11 +7,15 @@ import * as helmet from 'helmet';
 // import * as csurf from 'csurf';
 import * as rateLimit from 'express-rate-limit';
 import * as compression from 'compression';
+import { ConfigService } from './config/config.service';
 
 declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  // this is fun if you want the config service in the main.ts
+  const config = app.get<ConfigService>(ConfigService);
+  // now it is usable with config.get(keyName);
 
   app.use(helmet());
   app.enableCors();
