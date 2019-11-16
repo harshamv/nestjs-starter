@@ -12,14 +12,21 @@ import { JwtStrategy } from './jwt.strategy';
 import { UsersModule } from '../users/users.module';
 import { jwtConstants } from './constants';
 import { AuthController } from './auth.controller';
+import { ConfigService } from 'src/config/config.service';
+import { ConfigModule } from 'src/config/config.module';
 
 @Module({
   imports: [
+    ConfigModule,
     UsersModule,
     PassportModule,
-    JwtModule.register({
-      secret: jwtConstants.secret,
-      signOptions: { expiresIn: '2592000s' },
+    JwtModule.registerAsync({
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        secret: configService.get('JWT_SECRET'),
+        signOptions: { expiresIn: configService.get('JWT_EXPIRE') },
+      }),
+      inject: [ConfigService],
     }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
