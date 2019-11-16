@@ -4,7 +4,7 @@ import { AppModule } from './app.module';
 
 // NPM Packages
 import * as helmet from 'helmet';
-import * as csurf from 'csurf';
+// import * as csurf from 'csurf';
 import * as rateLimit from 'express-rate-limit';
 import * as compression from 'compression';
 
@@ -15,7 +15,7 @@ async function bootstrap() {
 
   app.use(helmet());
   app.enableCors();
-  app.use(csurf());
+  // app.use(csurf());
   app.use(
     rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes
