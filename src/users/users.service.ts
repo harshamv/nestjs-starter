@@ -10,23 +10,23 @@ export class UsersService {
     this.users = [
       {
         userId: 1,
-        username: 'john',
-        password: 'changeme',
+        email: 'harsha@gmail.com',
+        password: 'password',
       },
       {
         userId: 2,
-        username: 'chris',
-        password: 'secret',
+        email: 'pruthvi@gmail.com',
+        password: 'password',
       },
       {
         userId: 3,
-        username: 'maria',
-        password: 'guess',
+        email: 'shivam@gmail.com',
+        password: 'password',
       },
     ];
   }
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.users.find(user => user.username === username);
+  async findOne(email: string): Promise<User | undefined> {
+    return this.users.find(user => user.email === email);
   }
 }
