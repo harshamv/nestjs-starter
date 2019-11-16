@@ -7,7 +7,7 @@ import { PassportStrategy } from '@nestjs/passport';
 
 // Custom Packages
 // import { jwtConstants } from './constants';
-import { ConfigService } from 'src/config/config.service';
+import { ConfigService } from '../config/config.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -17,8 +17,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       ignoreExpiration: false,
       secretOrKey: config.get('JWT_SECRET'),
     });
-
-    console.log(config.get('JWT_SECRET'));
   }
 
   async validate(payload: any) {
