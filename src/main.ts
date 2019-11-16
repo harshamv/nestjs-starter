@@ -13,9 +13,8 @@ declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // this is fun if you want the config service in the main.ts
+
   const config = app.get<ConfigService>(ConfigService);
-  // now it is usable with config.get(keyName);
 
   app.use(helmet());
   app.enableCors();
@@ -28,13 +27,12 @@ async function bootstrap() {
   );
   app.use(compression());
 
-  await app.listen(3000);
+  await app.listen(config.get('PORT'));
 
   // Hot-Module Replacement#
   if (module.hot) {
     module.hot.accept();
     module.hot.dispose(() => app.close());
   }
-  // console.log(this.envConfig.get('MONGO_URI'));
 }
 bootstrap();
