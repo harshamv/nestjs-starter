@@ -1,10 +1,10 @@
-// Core Modules
+// Core Packages
 import { Controller, Request, Get, Post, UseGuards } from '@nestjs/common';
 
-// NPM Modules
+// NPM Packages
 import { AuthGuard } from '@nestjs/passport';
 
-// Custom Modules
+// Custom Packages
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
 

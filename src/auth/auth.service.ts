@@ -1,10 +1,10 @@
-// Core Modules
+// Core Packages
 import { Injectable } from '@nestjs/common';
 
-// NPM Modules
+// NPM Packages
 import { JwtService } from '@nestjs/jwt';
 
-// Custom Modules
+// Custom Packages
 import { UsersService } from '../users/users.service';
 
 @Injectable()

@@ -1,9 +1,9 @@
-// Core Modules
+// Core Packages
 import { Injectable } from '@nestjs/common';
 
-// NPM Modules
+// NPM Packages
 
-// Custom Modules
+// Custom Packages
 
 export type User = any;
 

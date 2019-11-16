@@ -1,11 +1,11 @@
-// Core Modules
+// Core Packages
 import { Module } from '@nestjs/common';
 
-// NPM Modules
+// NPM Packages
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 
-// Custom Modules
+// Custom Packages
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';

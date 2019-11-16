@@ -1,11 +1,11 @@
-// Core Modules
+// Core Packages
 import { Injectable } from '@nestjs/common';
 
-// NPM Modules
+// NPM Packages
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 
-// Custom Modules
+// Custom Packages
 import { jwtConstants } from './constants';
 
 @Injectable()

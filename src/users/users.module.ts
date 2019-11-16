@@ -1,9 +1,9 @@
-// Core Modules
+// Core Packages
 import { Module } from '@nestjs/common';
 
-// NPM Modules
+// NPM Packages
 
-// Custom Modules
+// Custom Packages
 import { UsersService } from './users.service';
 
 @Module({
