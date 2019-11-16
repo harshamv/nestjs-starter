@@ -24,7 +24,7 @@ export class ConfigService {
         .valid('development', 'production', 'test', 'provision')
         .default('development'),
       PORT: Joi.number().default(3000),
-      MONGO_URI: Joi.required(),
+      MONGODB_URI: Joi.required(),
       API_AUTH_ENABLED: Joi.boolean().required(),
       IS_AUTH_ENABLED: Joi.boolean().required(),
       JWT_SECRET: Joi.required(),
