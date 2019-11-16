@@ -1,16 +1,20 @@
 // NPM Packages
 import * as mongoose from 'mongoose';
+import { Provider } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
 // Custom Packages
-import { ConfigModule } from '../config/config.module';
 import { ConfigService } from '../config/config.service';
 
-export const databaseProviders = [
+export const databaseProviders: Provider[] = [
   {
+    // tells Nest what we want to inject into the factory to be able to use
+    // useful for config services along with other service or values
+    inject: [ConfigService],
     provide: 'DATABASE_CONNECTION',
-    useFactory: async (): Promise<typeof mongoose> =>
-      await mongoose.connect('mongodb://localhost:27017/test', {
+    useFactory: async (configService: ConfigService): Promise<typeof mongoose> =>
+      // not private readonly as this is not a constructor for a class
+      await mongoose.connect(configService.get('MONGODB_URI'), {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
