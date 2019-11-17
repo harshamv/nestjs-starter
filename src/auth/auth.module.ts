@@ -4,6 +4,7 @@ import { Module } from '@nestjs/common';
 // NPM Packages
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
+import { MongooseModule } from '@nestjs/mongoose';
 
 // Custom Packages
 import { AuthService } from './auth.service';
@@ -12,15 +13,15 @@ import { JwtStrategy } from './jwt.strategy';
 import { UsersModule } from '../users/users.module';
 import { jwtConstants } from './constants';
 import { AuthController } from './auth.controller';
-import { ConfigService } from 'src/config/config.service';
-import { ConfigModule } from 'src/config/config.module';
-import { DatabaseModule } from 'src/database/database.module';
+import { ConfigService } from '../config/config.service';
+import { ConfigModule } from '../config/config.module';
+import { UserSchema } from '../users/schemas/user.schema';
 
 @Module({
   imports: [
     ConfigModule,
-    DatabaseModule,
     UsersModule,
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -32,7 +33,7 @@ import { DatabaseModule } from 'src/database/database.module';
     }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
-  exports: [AuthService],
   controllers: [AuthController],
+  exports: [AuthService],
 })
 export class AuthModule {}
