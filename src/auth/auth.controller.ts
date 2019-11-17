@@ -17,7 +17,7 @@ import { AuthGuard } from '@nestjs/passport';
 // Custom Packages
 import { AuthService } from './auth.service';
 import { SignUpDto } from '../users/dto/signup.dto';
-import { User } from '../users/interfaces/user.interface';
+import { SignInDto } from '../users/dto/signin.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -29,8 +29,8 @@ export class AuthController {
   }
 
   // @UseGuards(AuthGuard('local'))
-  @Post('login')
-  async login(@Request() req) {
-    return this.authService.login(req.body);
+  @Post('signin')
+  async signIn(@Body(ValidationPipe) signInDto: SignInDto) {
+    return this.authService.signIn(signInDto);
   }
 }

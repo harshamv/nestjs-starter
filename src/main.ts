@@ -1,5 +1,6 @@
 // Core Packages
 import { NestFactory } from '@nestjs/core';
+import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 
 // NPM Packages
@@ -26,6 +27,12 @@ async function bootstrap() {
     }),
   );
   app.use(compression());
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      disableErrorMessages: true,
+    }),
+  );
 
   await app.listen(config.get('PORT'));
 

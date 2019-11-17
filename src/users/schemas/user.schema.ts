@@ -28,14 +28,18 @@ export const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please enter password'],
       minlength: [6, 'Password must be at least 6 characters'],
-      select: false,
+      // select: false,
+    },
+    passwordSalt: {
+      type: String,
+      // select: false,
     },
   },
   { timestamps: true },
 );
 
-// Encrypt User Password
+// Generate Salt & Encrypt User Password
 UserSchema.pre('save', async function(next) {
-  const salt = await bcrypt.genSalt(10); // Recommended in bcryptjs doc
+  const salt = (this.passwordSalt = await bcrypt.genSalt(10));
   this.password = await bcrypt.hash(this.password, salt);
 });
