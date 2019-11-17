@@ -8,7 +8,7 @@ import { InjectModel } from '@nestjs/mongoose';
 
 // Custom Packages
 import { UsersService } from '../users/users.service';
-import { User } from 'src/users/interfaces/user.interface';
+import { User } from '../users/interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -29,18 +29,14 @@ export class AuthService {
   }
 
   // User Sign Up
-  async signUp(user: User): Promise<User> {
-    // const payload = {
-    //   firstName: user.firstName,
-    //   lastName: user.firstName,
-    //   email: user.email,
-    //   password: user.password,
-    // };
-    // return {
-    //   access_token: this.jwtService.sign(payload),
-    // };
+  async signUp(user: User) {
     const newUser = new this.userModel(user);
-    return await newUser.save();
+    await newUser.save();
+
+    const payload = { email: newUser.email, userId: newUser._id };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 
   // User Login
