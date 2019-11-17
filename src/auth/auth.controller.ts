@@ -8,6 +8,7 @@ import {
   Delete,
   Body,
   UseGuards,
+  ValidationPipe,
 } from '@nestjs/common';
 
 // NPM Packages
@@ -23,7 +24,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('signup')
-  async signUp(@Body() signUpDto: SignUpDto) {
+  async signUp(@Body(ValidationPipe) signUpDto: SignUpDto) {
     return this.authService.signUp(signUpDto);
   }
 

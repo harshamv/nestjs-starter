@@ -1,5 +1,9 @@
 // Core Packages
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  ConflictException,
+  InternalServerErrorException,
+} from '@nestjs/common';
 
 // NPM Packages
 import { JwtService } from '@nestjs/jwt';
@@ -32,6 +36,14 @@ export class AuthService {
   async signUp(user: User) {
     const newUser = new this.userModel(user);
     await newUser.save();
+
+    // try {
+    //   await newUser.save();
+    // } catch (error) {
+    //   if (error.code === '23505')
+    //     throw new ConflictException('Username already exists');
+    //   else throw new InternalServerErrorException();
+    // }
 
     const payload = { email: newUser.email, userId: newUser._id };
     return {
