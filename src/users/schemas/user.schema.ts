@@ -1,6 +1,7 @@
+// NPM Packages
 import * as mongoose from 'mongoose';
 
-export const ItemSchema = new mongoose.Schema({
+export const UserSchema = new mongoose.Schema({
   firstName: String,
   lastName: String,
   email: String,

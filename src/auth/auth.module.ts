@@ -14,10 +14,12 @@ import { jwtConstants } from './constants';
 import { AuthController } from './auth.controller';
 import { ConfigService } from 'src/config/config.service';
 import { ConfigModule } from 'src/config/config.module';
+import { DatabaseModule } from 'src/database/database.module';
 
 @Module({
   imports: [
     ConfigModule,
+    DatabaseModule,
     UsersModule,
     PassportModule,
     JwtModule.registerAsync({
