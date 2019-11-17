@@ -15,7 +15,7 @@ export class AuthService {
   constructor(
     private readonly usersService: UsersService,
     private readonly jwtService: JwtService,
-    @InjectModel('Item') private readonly userModel: Model<User>,
+    @InjectModel('User') private readonly userModel: Model<User>,
   ) {}
 
   // Validate User
